@@ -1,4 +1,7 @@
 TestingDemo::Application.routes.draw do
+  #get "resources/show"
+  resources :resources, :only => :show
+  
   #get "users/show"
 
   get "home/index"
