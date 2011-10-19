@@ -1,7 +1,7 @@
 <h3>Home</h3>
 
 <% if user_signed_in? %>
-<p> Signed in as <% current_user %> </p>
+<p> Signed in as: <%= current_user.name %> </p>
 <% else %>
 <p>You are not logged in</p>
 <% end %>
