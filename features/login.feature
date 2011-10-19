@@ -6,7 +6,7 @@ Feature: authentication
 Scenario: Login
   Given The user "user@example.com" has an account
   When he logs in
-  Then he should see text "Signed in as: First User"
+  Then he should see text "Signed in as: First Name"
   And he should see a link "Logout"
 
 Scenario: Logout
