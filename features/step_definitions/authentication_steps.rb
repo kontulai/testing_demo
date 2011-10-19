@@ -31,7 +31,8 @@ end
 
 Then /^I should see "([^"]*)"$/ do |not_logged_in|
   page.should have_content(not_logged_in)
-  puts not_logged_in
+  #refactor to log in before logging out
+  #page.should have_content('Signed out successfully.')
 end
 
 
