@@ -1,12 +1,13 @@
 Feature: authentication
   In order to use the system
   As an user
-  I need to log in
+  I need to be logged in
 
 Scenario: Login
-  Given I have logged in as "user@example"
-  Then I should see "Signed in as: First User"
-  And I should see "Logout"
+  Given The user "user@example.com" has an account
+  When he logs in
+  Then he should see text "Signed in as: First User"
+  And he should see a link "Logout"
 
 Scenario: Logout
   Given I have logged in as any user
