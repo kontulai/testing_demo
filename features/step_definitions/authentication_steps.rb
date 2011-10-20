@@ -1,13 +1,13 @@
 #Login Scenario
 Given /^The user "user@example.com" has an account$/ do
-  @user = User.create!(:name => 'First Name', :password => 'please', :email => "user@example.com")
+ # @user = User.create!(:name => 'First Name', :password => 'please', :email => "user@example.com")
 end
 
 module LoginSteps
   def login
     visit('/users/sign_in')
-    fill_in('user_email', :with => @user.email)
-    fill_in('user_password', :with => @user.password)
+    fill_in('user_email', :with => 'user@example.com')
+    fill_in('user_password', :with => 'please')
     click_button('Sign in')
   end
 end

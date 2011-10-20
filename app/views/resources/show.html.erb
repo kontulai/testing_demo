@@ -1,13 +1,15 @@
 <h3> Reservations for today </h3>
 <table>
 	<!-- refactor to handle other days> -->
-	<th>Today</th> 
+	<th>Time</th> 
 	<th>Reserver</th>
 	<% @reservations.each do |reservation| %>
-	<p>All reservation for resource
-		<%= reservation.user.name %>
-		<%= reservation.duration %>
-		<%= reservation.starttime.to_s %>
+	
+		<tr>
+		<td><%= reservation.starttime.to_s %></td>
+		<td><%= reservation.user.name %></tr>
+		</tr>
+		
 		
 		<% end %> 
 	<p>	   

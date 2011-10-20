@@ -21,7 +21,7 @@ When /^user clicks a resource$/ do
 end
 
 Then /^user can see it's daily status$/ do
-  page.should have_content('Today')
+  page.should have_content('Reservation for today')
   #today's date
   #table of today's hour
 end
