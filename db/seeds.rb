@@ -11,5 +11,7 @@ puts 'Resource: created, resource: ' <<resource.name
 puts 'SETTING UP DEFAULT RESERVATION'
 now = DateTime.new
 now = DateTime.now
-#reservation = Reservation.create! :duration => 1, starttime: now.to_s(:db), user: => User.where(name like 'First Name'), resource: => Resource.where(name like 'Resource1')
-puts 'Reservation: created 1h reservation for time: '<<reservation.starttime
+testtime = now.to_s(:db)
+puts testtime
+reservation = Reservation.create! :duration => 1, :starttime => testtime, :user => user, :resource => resource
+#puts 'Reservation: created 1h reservation for time: '<<reservation.starttime
