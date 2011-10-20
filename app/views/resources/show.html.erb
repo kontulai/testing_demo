@@ -1,14 +1,28 @@
 <h3> Reservations for today </h3>
-<table>
+<table border=1>
 	<!-- refactor to handle other days> -->
 	<th>Time</th> 
 	<th>Reserver</th>
 	<% for i in 0..23 %>
 		<tr>
 			<td><%= "#{i} - #{i+1} " %> </td>
+			<% reservedFor = nil %>
+			<% @reservations.each do |reservation| %>
 			
-			<td>Free </td>
-	
+			<% if reservation.starttime.hour == i %> 
+				
+				<% reservedFor = reservation.user.name %>
+				<% else %>
+				
+		    <% end %>
+			
+		 <% end %>
+		<% if reservedFor != nil%>
+		<td> <%= reservedFor %></td>
+		<% else %>
+		<td><%= link_to 'reserve', reserve %></td>
+		<% end %> 
+	</tr>
 	<% end %>
 	<p>	   
 </table>
