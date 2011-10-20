@@ -5,5 +5,9 @@ class ResourcesController < ApplicationController
      @reservations = Reservation.where(:starttime => (Time.now.midnight)..Time.now.midnight + 1.day).where(:resource_id => params[:id]).order(:starttime)
      
   end
+  
+  def reserve_resource
+    puts 'doing reserve here'
+  end
 
 end

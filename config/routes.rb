@@ -8,7 +8,9 @@ TestingDemo::Application.routes.draw do
 
   devise_for :users
   resources :users, :only => :show
-  
+  resources :reserve
+  post "reserve" => "reserve#reserve_resource"
+  #match '/reserve/:reserve_resource' => 'reserve#reserve_resource'
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

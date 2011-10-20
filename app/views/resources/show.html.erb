@@ -20,7 +20,16 @@
 		<% if reservedFor != nil%>
 		<td> <%= reservedFor %></td>
 		<% else %>
-		<td><%= link_to 'reserve', '/' %></td>
+		<td>
+			<%= form_tag(:controller => "reserve", :action => "reserve_resource", :method => "post") do %>
+				<%= hidden_field_tag(:user, current_user) %>
+				<%= hidden_field_tag(:resource, @resource) %>
+				<%= hidden_field_tag(:starttime, Time.now.midnight + Time.now.hour.hours) %>
+			  	<%= submit_tag("reserve") %>
+			  
+			<% end %>
+			
+		</td>
 		<% end %> 
 	</tr>
 	<% end %>
