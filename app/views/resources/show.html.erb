@@ -3,14 +3,12 @@
 	<!-- refactor to handle other days> -->
 	<th>Time</th> 
 	<th>Reserver</th>
-	<% @reservations.each do |reservation| %>
-	
+	<% for i in 0..23 %>
 		<tr>
-		<td><%= reservation.starttime.to_s %></td>
-		<td><%= reservation.user.name %></tr>
-		</tr>
-		
-		
-		<% end %> 
+			<td><%= "#{i} - #{i+1} " %> </td>
+			
+			<td>Free </td>
+	
+	<% end %>
 	<p>	   
 </table>

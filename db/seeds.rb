@@ -19,13 +19,13 @@ puts 'Resource: created, resource: ' <<resource2.name
 
 puts 'SETTING UP DEFAULT RESERVATION'
 now = DateTime.new
-now = DateTime.now
+now = DateTime.now.midnight + Time.now.hour.hours
 testtime = now.to_s(:db)
 reservation = Reservation.create! :duration => 1, :starttime => testtime, :user => user, :resource => resource
 
 puts 'SETTING UP SECOND RESERVATION'
 onehourlater = DateTime.new
-onehourlater = DateTime.now + 1.hour
+onehourlater = DateTime.now.midnight + Time.now.hour.hours + 1.hour
 testtime2 = onehourlater.to_s(:db)
 reservation = Reservation.create! :duration => 1, :starttime => testtime2, :user => user, :resource => resource
 
@@ -34,7 +34,7 @@ reservation = Reservation.create! :duration => 1, :starttime => testtime, :user 
 
 puts 'SETTING UP FOURTH RESERVATION'
 twohourslater = DateTime.new
-twohourslater = DateTime.now + 2.hour
+twohourslater = DateTime.now.midnight + Time.now.hour.hours + 2.hour
 testtime4 = twohourslater.to_s(:db)
 reservation = Reservation.create! :duration => 1, :starttime => testtime4, :user => user2, :resource => resource
 
