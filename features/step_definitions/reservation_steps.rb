@@ -21,7 +21,8 @@ When /^user clicks a resource$/ do
 end
 
 Then /^user can see it's daily status$/ do
-  page.should have_content('Reservation for today')
+  page.should have_content('Reservations for today')
+  page.should have_content('Second User')
   #today's date
   #table of today's hour
 end
@@ -38,5 +39,5 @@ end
 
 Then /^user has reserved the slot of a resource$/ do
   #index
-  page.should have_content('Reserved for')
+  page.should have_content('Reserved for:')
 end

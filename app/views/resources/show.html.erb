@@ -5,7 +5,7 @@
 	<th>Reserver</th>
 	<% for i in 0..23 %>
 		<tr>
-			<td><%= "#{i} - #{i+1} " %> </td>
+			<td><%= "#{i}:00 - #{i+1}:00 " %> </td>
 			<% reservedFor = nil %>
 			<% @reservations.each do |reservation| %>
 			
@@ -20,7 +20,7 @@
 		<% if reservedFor != nil%>
 		<td> <%= reservedFor %></td>
 		<% else %>
-		<td><%= link_to 'reserve', reserve %></td>
+		<td><%= link_to 'reserve', '/' %></td>
 		<% end %> 
 	</tr>
 	<% end %>
