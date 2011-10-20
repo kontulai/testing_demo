@@ -10,7 +10,7 @@ class ReserveController < ApplicationController
   def create
    reserve_time = params[:reservetime]
    logger.debug "reserve_time: "+reserve_time
-   reservation = Reservation.create! :duration => 1, :starttime => reserve_time, :user => User.find(params[:user_id]), :resource => Resource.find(params[:resource_id])
+   reservation = Reservation.create(:duration => 1, :starttime => reserve_time, :user => User.find(params[:user_id]), :resource => Resource.find(params[:resource_id]))
    #reservation = Reservation.create! :duration => 1, :starttime => reserve_time, :user => User.find(params[:user_id]), :resource => Resource.find(params[:resource_id])
    
    
