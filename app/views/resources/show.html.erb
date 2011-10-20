@@ -3,4 +3,12 @@
 	<!-- refactor to handle other days> -->
 	<th>Today</th> 
 	<th>Reserver</th>
+	<% @reservations.each do |reservation| %>
+	<p>All reservation for resource
+		<%= reservation.user.name %>
+		<%= reservation.duration %>
+		<%= reservation.starttime.to_s %>
+		
+		<% end %> 
+	<p>	   
 </table>
