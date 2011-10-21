@@ -22,7 +22,7 @@
 				<td> Reserved for You 	<%= form_tag(:controller => "reserve", :action => "cancel", :method => "delete") do %>
 										<%= hidden_field_tag(:user_id, current_user.id) %>
 										<%= hidden_field_tag(:resource_id, @resource.id) %>
-										<%= hidden_field_tag(:reservetime, (DateTime.now.midnight + i.hours).to_s(:db)) %>
+										<%= hidden_field_tag(:reservetime, (DateTime.now.midnight + i.hours)) %>
 									  	<%= submit_tag("cancel") %>
 										<% end %>
 				</td>

@@ -2,7 +2,7 @@ class ResourcesController < ApplicationController
   def show
      @resource = Resource.find(params[:id])
      #all reservations for today as default
-     @reservations = Reservation.where(:starttime => (Time.now.midnight)..Time.now.midnight + 1.day).where(:resource_id => params[:id]).order(:starttime)
+     @reservations = Reservation.where(:starttime => (Time.now.midnight).to_s(:db)..(Time.now.midnight + 1.day).to_s(:db)).where(:resource_id => params[:id]).order(:starttime)
      
   end
   
