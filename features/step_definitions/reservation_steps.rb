@@ -1,3 +1,8 @@
+def xpath_row_containing(a, b)
+  #{}"//table/tr[contains(., '0:00 - 1:00') and contains(., 'Slot is Free,')]"
+  "//table/tr[contains(., '#{a}') and contains(., '#{b}')]"
+end
+
 Given /^user has an account$/ do
   #use predefined user
 end
@@ -22,9 +27,8 @@ end
 
 Then /^user can see it's daily status$/ do
   page.should have_content('Reservations for today')
-  page.should have_content('Second User')
-  #today's date
-  #table of today's hour
+  #check that it has a table
+  #and some prefilled slots
 end
 
 Given /^user has clicked a resource$/ do
@@ -32,12 +36,24 @@ Given /^user has clicked a resource$/ do
   click_link('Resource1')
 end
 
-When /^user clicks a slot that is not occupied$/ do
-  #TODO: index number
-  click_link('reserve')
+When /^user clicks "([^"]*)" button for a time slot: "([^"]*)", which displays "([^"]*)"$/ do |button_name, slot, is_free_text|
+  row = find(:xpath, xpath_row_containing(slot, is_free_text))
+  row.click_button(button_name)
 end
 
-Then /^user has reserved the slot of a resource$/ do
-  #index
-  page.should have_content('Reserved for:')
+Then /^the same slot: "([^"]*)" displays: "([^"]*)"$/ do |slot, is_reserved_text|
+  #row can be found
+  row = find(:xpath, xpath_row_containing(slot, is_reserved_text))
+  
 end
+
+When /^user clicks: "([^"]*)" for slot: "([^"]*)"  with status: "([^"]*)"$/ do |button_name, slot, is_reserved_text|
+  row = find(:xpath, xpath_row_containing(slot, is_reserved_text))
+  row.click_button(button_name)
+end
+
+Then /^the reservation for slot: "([^"]*)" is cancelled and now has a status: "([^"]*)"$/ do |slot, is_free_text|
+  row = find(:xpath, xpath_row_containing(slot, is_free_text))
+end
+
+
