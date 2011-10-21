@@ -19,21 +19,29 @@
 		 <% end %>
 		<% if reservedFor != nil%>
 			<% if reservedFor == current_user.name %>
-			<td> Reserved for You </td>
+				<td> Reserved for You 	<%= form_tag(:controller => "reserve", :action => "cancel", :method => "delete") do %>
+										<%= hidden_field_tag(:user_id, current_user.id) %>
+										<%= hidden_field_tag(:resource_id, @resource.id) %>
+										<%= hidden_field_tag(:reservetime, (DateTime.now.midnight + i.hours).to_s(:db)) %>
+									  	<%= submit_tag("cancel") %>
+										<% end %>
+				</td>
 			<% else %>
-			<td> <%= reservedFor %></td>
+				<td> <%= reservedFor %></td>
+			
+				
 			<% end %>
 		
 		
 		<% else %>
 		<td>
 			<%= form_tag(:controller => "reserve", :action => "reserve_resource", :method => "post") do %>
-				<%= hidden_field_tag(:user_id, current_user.id) %>
-				<%= hidden_field_tag(:resource_id, @resource.id) %>
-				<%= hidden_field_tag(:reservetime, (DateTime.now.midnight + i.hours).to_s(:db)) %>
-			  	<%= submit_tag("reserve") %>
+			<%= hidden_field_tag(:user_id, current_user.id) %>
+			<%= hidden_field_tag(:resource_id, @resource.id) %>
+			<%= hidden_field_tag(:reservetime, (DateTime.now.midnight + i.hours).to_s(:db)) %>
+		  	<%= submit_tag("reserve") %>
 			  
-		<% end %>
+			<% end %>
 			
 		</td>
 		<% end %> 

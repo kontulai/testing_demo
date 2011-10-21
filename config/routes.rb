@@ -10,6 +10,7 @@ TestingDemo::Application.routes.draw do
   resources :users, :only => :show
   resources :reserve
   post "reserve" => "reserve#reserve_resource"
+  match "cancel" => "reserve#cancel"
   #match '/reserve/:reserve_resource' => 'reserve#reserve_resource'
   
   # The priority is based upon order of creation:
