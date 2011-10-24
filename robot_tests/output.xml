@@ -1,0 +1,1007 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20111024 16:33:40.326" generator="Robot 2.6.3 (Python 2.7.1 on darwin)">
+<suite source="/Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests" name="Robot Tests">
+<doc></doc>
+<metadata>
+</metadata>
+<suite source="/Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/Selenium.txt" name="Selenium">
+<doc></doc>
+<metadata>
+</metadata>
+<kw type="setup" name="SeleniumLibrary.Start Selenium Server" timeout="">
+<doc>Starts the Selenium Server provided with SeleniumLibrary.</doc>
+<arguments>
+</arguments>
+<msg timestamp="20111024 16:33:40.417" level="INFO">Selenium Server started with command "java -jar /Library/Python/2.7/site-packages/SeleniumLibrary/lib/selenium-server.jar -port 4444 -userExtensions /Library/Python/2.7/site-packages/SeleniumLibrary/lib/user-extensions.js -firefoxProfileTemplate /Library/Python/2.7/site-packages/SeleniumLibrary/firefoxprofile"</msg>
+<msg timestamp="20111024 16:33:40.417" html="yes" level="INFO">Selenium server log is written to &lt;a href="file:///Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/selenium_server_log.txt"&gt;/Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/selenium_server_log.txt&lt;/a&gt;.</msg>
+<status status="PASS" endtime="20111024 16:33:40.417" starttime="20111024 16:33:40.412"></status>
+</kw>
+<test name="Login with default user" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:33:40.421" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:33:45.188" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:33:45.188" starttime="20111024 16:33:40.420"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:33:45.190" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:33:45.190" starttime="20111024 16:33:45.189"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:33:51.329" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:33:51.329" starttime="20111024 16:33:45.191"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:33:51.329" starttime="20111024 16:33:40.419"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>You are not logged in</arg>
+</arguments>
+<msg timestamp="20111024 16:33:51.344" level="INFO">Current page contains text 'You are not logged in'.</msg>
+<status status="PASS" endtime="20111024 16:33:51.344" starttime="20111024 16:33:51.330"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:33:51.540" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:33:51.540" starttime="20111024 16:33:51.345"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:33:51.559" level="INFO">Typing text 'user@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:33:51.559" starttime="20111024 16:33:51.540"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:33:51.574" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:33:51.574" starttime="20111024 16:33:51.560"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:33:52.925" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:33:52.926" starttime="20111024 16:33:51.575"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:33:52.926" starttime="20111024 16:33:51.344"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Signed in as: First User</arg>
+</arguments>
+<msg timestamp="20111024 16:33:52.946" level="INFO">Current page contains text 'Signed in as: First User'.</msg>
+<status status="PASS" endtime="20111024 16:33:52.946" starttime="20111024 16:33:52.927"></status>
+</kw>
+<kw type="kw" name="Logout" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Logout</arg>
+</arguments>
+<msg timestamp="20111024 16:33:53.160" level="INFO">Clicking link 'Logout'.</msg>
+<status status="PASS" endtime="20111024 16:33:53.161" starttime="20111024 16:33:52.947"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:33:53.161" starttime="20111024 16:33:52.947"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>You are not logged in</arg>
+</arguments>
+<msg timestamp="20111024 16:33:53.170" level="INFO">Current page contains text 'You are not logged in'.</msg>
+<status status="PASS" endtime="20111024 16:33:53.171" starttime="20111024 16:33:53.161"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:33:53.247" starttime="20111024 16:33:53.171"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:33:53.248" critical="yes" starttime="20111024 16:33:40.418"></status>
+</test>
+<test name="Sign up" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:33:53.251" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:33:57.835" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:33:57.835" starttime="20111024 16:33:53.250"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:33:57.837" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:33:57.837" starttime="20111024 16:33:57.836"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:34:01.824" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:34:01.824" starttime="20111024 16:33:57.838"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:01.824" starttime="20111024 16:33:53.249"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Sign up</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.005" level="INFO">Clicking link 'Sign up'.</msg>
+<status status="PASS" endtime="20111024 16:34:02.005" starttime="20111024 16:34:01.825"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>test@testing.com</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.018" level="INFO">Typing text 'test@testing.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:02.018" starttime="20111024 16:34:02.006"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>password</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.038" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:02.039" starttime="20111024 16:34:02.018"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password_confirmation</arg>
+<arg>password</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.048" level="INFO">Typing password into text field 'user_password_confirmation'</msg>
+<status status="PASS" endtime="20111024 16:34:02.048" starttime="20111024 16:34:02.039"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_name</arg>
+<arg>Test User</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.061" level="INFO">Typing text 'Test User' into text field 'user_name'</msg>
+<status status="PASS" endtime="20111024 16:34:02.061" starttime="20111024 16:34:02.049"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign up</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.398" level="INFO">Clicking button 'Sign up'.</msg>
+<status status="PASS" endtime="20111024 16:34:02.398" starttime="20111024 16:34:02.062"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Welcome! You have signed up successfully.</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.409" level="INFO">Current page contains text 'Welcome! You have signed up successfully.'.</msg>
+<status status="PASS" endtime="20111024 16:34:02.409" starttime="20111024 16:34:02.398"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Signed in as: Test User</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.418" level="INFO">Current page contains text 'Signed in as: Test User'.</msg>
+<status status="PASS" endtime="20111024 16:34:02.419" starttime="20111024 16:34:02.409"></status>
+</kw>
+<kw type="kw" name="Logout" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Logout</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.659" level="INFO">Clicking link 'Logout'.</msg>
+<status status="PASS" endtime="20111024 16:34:02.660" starttime="20111024 16:34:02.420"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:02.660" starttime="20111024 16:34:02.419"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:02.773" starttime="20111024 16:34:02.660"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:34:02.773" critical="yes" starttime="20111024 16:33:53.248"></status>
+</test>
+<test name="Edit account" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:34:02.775" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:34:07.446" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:34:07.445" starttime="20111024 16:34:02.775"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:34:07.447" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:34:07.447" starttime="20111024 16:34:07.446"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:34:11.331" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:34:11.331" starttime="20111024 16:34:07.447"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:11.332" starttime="20111024 16:34:02.774"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:34:11.535" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:34:11.535" starttime="20111024 16:34:11.333"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:11.545" level="INFO">Typing text 'user@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:11.546" starttime="20111024 16:34:11.536"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:11.556" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:11.556" starttime="20111024 16:34:11.546"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:11.903" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:34:11.903" starttime="20111024 16:34:11.556"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:11.903" starttime="20111024 16:34:11.332"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Edit account</arg>
+</arguments>
+<msg timestamp="20111024 16:34:12.111" level="INFO">Clicking link 'Edit account'.</msg>
+<status status="PASS" endtime="20111024 16:34:12.112" starttime="20111024 16:34:11.904"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Cancel my account</arg>
+</arguments>
+<msg timestamp="20111024 16:34:12.393" level="INFO">Clicking link 'Cancel my account'.</msg>
+<status status="PASS" endtime="20111024 16:34:12.393" starttime="20111024 16:34:12.112"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Confirm Action" timeout="">
+<doc>Dismisses currently shown confirmation dialog and returns it's message.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:12.400" starttime="20111024 16:34:12.393"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Bye! Your account was successfully cancelled. We hope to see you again soon.</arg>
+</arguments>
+<msg timestamp="20111024 16:34:12.410" level="INFO">Current page contains text 'Bye! Your account was successfully cancelled. We hope to see you again soon.'.</msg>
+<status status="PASS" endtime="20111024 16:34:12.411" starttime="20111024 16:34:12.401"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>You are not logged in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:12.425" level="INFO">Current page contains text 'You are not logged in'.</msg>
+<status status="PASS" endtime="20111024 16:34:12.425" starttime="20111024 16:34:12.411"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:12.498" starttime="20111024 16:34:12.426"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:34:12.498" critical="yes" starttime="20111024 16:34:02.773"></status>
+</test>
+<test name="Resource listing" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:34:12.501" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:34:17.189" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:34:17.188" starttime="20111024 16:34:12.500"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:34:17.191" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:34:17.191" starttime="20111024 16:34:17.189"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.105" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:34:21.106" starttime="20111024 16:34:17.191"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:21.106" starttime="20111024 16:34:12.499"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.280" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:34:21.281" starttime="20111024 16:34:21.107"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.296" level="INFO">Typing text 'user@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:21.297" starttime="20111024 16:34:21.281"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.310" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:21.311" starttime="20111024 16:34:21.297"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.642" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:34:21.643" starttime="20111024 16:34:21.311"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:21.643" starttime="20111024 16:34:21.106"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain Link" timeout="">
+<doc>Verifies link identified by `locator` is found from current page.</doc>
+<arguments>
+<arg>Resource1</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.664" level="INFO">Current page contains link 'Resource1'.</msg>
+<status status="PASS" endtime="20111024 16:34:21.664" starttime="20111024 16:34:21.643"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:21.757" starttime="20111024 16:34:21.665"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:34:21.757" critical="yes" starttime="20111024 16:34:12.499"></status>
+</test>
+<test name="Daily status" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:34:21.760" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:34:26.408" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:34:26.408" starttime="20111024 16:34:21.759"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:34:26.409" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:34:26.409" starttime="20111024 16:34:26.409"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:34:30.296" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:34:30.296" starttime="20111024 16:34:26.409"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:30.296" starttime="20111024 16:34:21.758"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:34:30.475" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:34:30.475" starttime="20111024 16:34:30.297"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:30.489" level="INFO">Typing text 'user@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:30.490" starttime="20111024 16:34:30.476"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:30.500" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:30.500" starttime="20111024 16:34:30.490"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:30.844" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:34:30.844" starttime="20111024 16:34:30.501"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:30.845" starttime="20111024 16:34:30.297"></status>
+</kw>
+<kw type="kw" name="open Resource" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${resource_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:31.089" level="INFO">Clicking link 'Resource1'.</msg>
+<status status="PASS" endtime="20111024 16:34:31.089" starttime="20111024 16:34:30.846"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:31.090" starttime="20111024 16:34:30.845"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Page Should Contain" timeout="">
+<doc>Verifies that current page contains `text`.</doc>
+<arguments>
+<arg>Reservations for today</arg>
+</arguments>
+<msg timestamp="20111024 16:34:31.118" level="INFO">Current page contains text 'Reservations for today'.</msg>
+<status status="PASS" endtime="20111024 16:34:31.118" starttime="20111024 16:34:31.090"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:31.193" starttime="20111024 16:34:31.118"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:34:31.193" critical="yes" starttime="20111024 16:34:21.758"></status>
+</test>
+<test name="Book and cancel a slot" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:34:31.196" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:34:35.887" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:34:35.886" starttime="20111024 16:34:31.195"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:34:35.889" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:34:35.889" starttime="20111024 16:34:35.888"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:34:39.802" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:34:39.802" starttime="20111024 16:34:35.890"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:39.802" starttime="20111024 16:34:31.194"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:34:39.988" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:34:39.988" starttime="20111024 16:34:39.803"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:39.997" level="INFO">Typing text 'user@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:39.998" starttime="20111024 16:34:39.989"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.012" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:40.013" starttime="20111024 16:34:39.998"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.356" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:34:40.356" starttime="20111024 16:34:40.013"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:40.356" starttime="20111024 16:34:39.802"></status>
+</kw>
+<kw type="kw" name="open Resource" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${resource_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.594" level="INFO">Clicking link 'Resource1'.</msg>
+<status status="PASS" endtime="20111024 16:34:40.594" starttime="20111024 16:34:40.357"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:40.595" starttime="20111024 16:34:40.356"></status>
+</kw>
+<kw type="kw" name="book a slot" timeout="">
+<doc></doc>
+<arguments>
+<arg>3:00 - 4:00</arg>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_free_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.607" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Slot is Free'.</msg>
+<status status="PASS" endtime="20111024 16:34:40.608" starttime="20111024 16:34:40.597"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]/form/input[@value='reserve']</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.901" level="INFO">Clicking button 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]/form/input[@value='reserve']'.</msg>
+<status status="PASS" endtime="20111024 16:34:40.902" starttime="20111024 16:34:40.608"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_reserved_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.917" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Reserved for You'.</msg>
+<status status="PASS" endtime="20111024 16:34:40.918" starttime="20111024 16:34:40.902"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:40.918" starttime="20111024 16:34:40.595"></status>
+</kw>
+<kw type="kw" name="cancel a slot" timeout="">
+<doc></doc>
+<arguments>
+<arg>3:00 - 4:00</arg>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_reserved_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:40.928" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Reserved for You'.</msg>
+<status status="PASS" endtime="20111024 16:34:40.928" starttime="20111024 16:34:40.919"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]/form/input[@value='cancel']</arg>
+</arguments>
+<msg timestamp="20111024 16:34:41.241" level="INFO">Clicking button 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]/form/input[@value='cancel']'.</msg>
+<status status="PASS" endtime="20111024 16:34:41.242" starttime="20111024 16:34:40.929"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_free_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:41.256" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Slot is Free'.</msg>
+<status status="PASS" endtime="20111024 16:34:41.257" starttime="20111024 16:34:41.242"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:41.257" starttime="20111024 16:34:40.918"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:41.332" starttime="20111024 16:34:41.257"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:34:41.333" critical="yes" starttime="20111024 16:34:31.194"></status>
+</test>
+<test name="book a slot with second user" timeout="">
+<doc></doc>
+<kw type="setup" name="setup application" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="${rc} = OperatingSystem.Run And Return Rc" timeout="">
+<doc>Runs the given command in the system and returns the return code.</doc>
+<arguments>
+<arg>rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests${/}..${/}Rakefile db:reset</arg>
+</arguments>
+<msg timestamp="20111024 16:34:41.335" level="INFO">Running command 'rake -f /Users/arelande/Documents/acceptance_testing_demo/testing_demo/robot_tests/../Rakefile db:reset 2&gt;&amp;1'</msg>
+<msg timestamp="20111024 16:34:45.939" level="INFO">${rc} = 0</msg>
+<status status="PASS" endtime="20111024 16:34:45.938" starttime="20111024 16:34:41.334"></status>
+</kw>
+<kw type="kw" name="BuiltIn.Should Be Equal As Integers" timeout="">
+<doc>Fails if objects are unequal after converting them to integers.</doc>
+<arguments>
+<arg>${rc}</arg>
+<arg>0</arg>
+</arguments>
+<msg timestamp="20111024 16:34:45.940" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20111024 16:34:45.940" starttime="20111024 16:34:45.939"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Open Browser" timeout="">
+<doc>Opens a new browser instance to given URL.</doc>
+<arguments>
+<arg>http://localhost:3000</arg>
+</arguments>
+<msg timestamp="20111024 16:34:49.920" level="INFO">Opening browser 'firefox' to base url 'http://localhost:3000'</msg>
+<status status="PASS" endtime="20111024 16:34:49.920" starttime="20111024 16:34:45.940"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:49.920" starttime="20111024 16:34:41.334"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+<arg>user2@example.com</arg>
+<arg>please</arg>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:34:50.104" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:34:50.104" starttime="20111024 16:34:49.921"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:50.113" level="INFO">Typing text 'user2@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:50.113" starttime="20111024 16:34:50.105"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:50.128" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:50.128" starttime="20111024 16:34:50.114"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:50.465" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:34:50.465" starttime="20111024 16:34:50.128"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:50.465" starttime="20111024 16:34:49.921"></status>
+</kw>
+<kw type="kw" name="open Resource" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${resource_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:50.706" level="INFO">Clicking link 'Resource1'.</msg>
+<status status="PASS" endtime="20111024 16:34:50.706" starttime="20111024 16:34:50.466"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:50.706" starttime="20111024 16:34:50.466"></status>
+</kw>
+<kw type="kw" name="book a slot" timeout="">
+<doc></doc>
+<arguments>
+<arg>3:00 - 4:00</arg>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_free_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:50.719" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Slot is Free'.</msg>
+<status status="PASS" endtime="20111024 16:34:50.719" starttime="20111024 16:34:50.709"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]/form/input[@value='reserve']</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.041" level="INFO">Clicking button 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]/form/input[@value='reserve']'.</msg>
+<status status="PASS" endtime="20111024 16:34:51.042" starttime="20111024 16:34:50.720"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_reserved_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.053" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Reserved for You'.</msg>
+<status status="PASS" endtime="20111024 16:34:51.053" starttime="20111024 16:34:51.042"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:51.054" starttime="20111024 16:34:50.707"></status>
+</kw>
+<kw type="kw" name="Logout" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Logout</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.273" level="INFO">Clicking link 'Logout'.</msg>
+<status status="PASS" endtime="20111024 16:34:51.274" starttime="20111024 16:34:51.055"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:51.274" starttime="20111024 16:34:51.054"></status>
+</kw>
+<kw type="kw" name="Login" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>Login</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.453" level="INFO">Clicking link 'Login'.</msg>
+<status status="PASS" endtime="20111024 16:34:51.454" starttime="20111024 16:34:51.275"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Text" timeout="">
+<doc>Types the given `text` into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_email</arg>
+<arg>${user_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.463" level="INFO">Typing text 'user@example.com' into text field 'user_email'</msg>
+<status status="PASS" endtime="20111024 16:34:51.463" starttime="20111024 16:34:51.454"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Input Password" timeout="">
+<doc>Types the given password into text field identified by `locator`.</doc>
+<arguments>
+<arg>user_password</arg>
+<arg>${password}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.476" level="INFO">Typing password into text field 'user_password'</msg>
+<status status="PASS" endtime="20111024 16:34:51.476" starttime="20111024 16:34:51.463"></status>
+</kw>
+<kw type="kw" name="SeleniumLibrary.Click Button" timeout="">
+<doc>Clicks a button identified by `locator`.</doc>
+<arguments>
+<arg>Sign in</arg>
+</arguments>
+<msg timestamp="20111024 16:34:51.815" level="INFO">Clicking button 'Sign in'.</msg>
+<status status="PASS" endtime="20111024 16:34:51.815" starttime="20111024 16:34:51.477"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:51.815" starttime="20111024 16:34:51.274"></status>
+</kw>
+<kw type="kw" name="open Resource" timeout="">
+<doc></doc>
+<arguments>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Click Link" timeout="">
+<doc>Clicks a link identified by locator.</doc>
+<arguments>
+<arg>${resource_name}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:52.058" level="INFO">Clicking link 'Resource1'.</msg>
+<status status="PASS" endtime="20111024 16:34:52.058" starttime="20111024 16:34:51.816"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:52.059" starttime="20111024 16:34:51.815"></status>
+</kw>
+<kw type="kw" name="confirm booking" timeout="">
+<doc></doc>
+<arguments>
+<arg>3:00 - 4:00</arg>
+<arg>Reserved for: Second User</arg>
+</arguments>
+<kw type="kw" name="SeleniumLibrary.Element Should Contain" timeout="">
+<doc>Verifies element identified by `locator` contains text `expected`.</doc>
+<arguments>
+<arg>xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]</arg>
+<arg>${is_reserved_text}</arg>
+</arguments>
+<msg timestamp="20111024 16:34:52.070" level="INFO">Verifying element 'xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]' contains text 'Reserved for: Second User'.</msg>
+<status status="PASS" endtime="20111024 16:34:52.070" starttime="20111024 16:34:52.061"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:52.070" starttime="20111024 16:34:52.059"></status>
+</kw>
+<kw type="teardown" name="SeleniumLibrary.Close Browser" timeout="">
+<doc>Closes the current browser.</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:52.139" starttime="20111024 16:34:52.071"></status>
+</kw>
+<tags>
+</tags>
+<status status="PASS" endtime="20111024 16:34:52.140" critical="yes" starttime="20111024 16:34:41.333"></status>
+</test>
+<kw type="teardown" name="SeleniumLibrary.Stop Selenium Server" timeout="">
+<doc>Stops the selenium server (and closes all browsers).</doc>
+<arguments>
+</arguments>
+<status status="PASS" endtime="20111024 16:34:52.144" starttime="20111024 16:34:52.140"></status>
+</kw>
+<status status="PASS" endtime="20111024 16:34:52.144" starttime="20111024 16:33:40.348"></status>
+</suite>
+<status status="PASS" endtime="20111024 16:34:52.145" starttime="20111024 16:33:40.326"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="0" pass="7">Critical Tests</stat>
+<stat fail="0" pass="7">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="0" name="Robot Tests" idx="s1" pass="7">Robot Tests</stat>
+<stat fail="0" name="Selenium" idx="s1-s1" pass="7">Robot Tests.Selenium</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
