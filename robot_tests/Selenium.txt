@@ -1,0 +1,25 @@
+*** Settings ***
+Suite Setup     start selenium server
+Suite Teardown  stop selenium server
+Test Setup      open browser  http://localhost:3000
+Test Teardown   close Browser
+Library         Selenium Library
+
+*** Test Cases ***
+Login with default user
+    Page Should Contain  You are not logged in
+    Login
+    Page Should Contain  Signed in as: First User
+    Logout
+    Page Should Contain  You are not logged in
+
+*** Keywords ***
+Login
+    Click Link  Login
+    Input Text  user_email  user@example.com
+    Input Password  user_password  please
+    Click Button  Sign in
+
+Logout
+    Click Link  Logout
+
