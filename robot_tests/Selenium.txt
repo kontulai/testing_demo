@@ -8,6 +8,7 @@ Library         OperatingSystem
 
 *** Variables ***
 ${rc}  ${EMPTY}
+${reservation_row}  ${EMPTY}
 
 *** Test Cases ***
 Login with default user
@@ -36,6 +37,24 @@ Edit account
     Page Should Contain  Bye! Your account was successfully cancelled. We hope to see you again soon.
     Page Should Contain  You are not logged in
 
+Resource listing
+    Login
+    Page Should Contain Link  Resource1
+
+Daily status
+    Login
+    open Resource1
+    Page Should Contain  Reservations for today
+
+Book and cancel a slot
+    Login
+    open Resource1
+    Element Should Contain  xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]  Slot is Free
+    Click button  xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]/form/input[@value='reserve']
+    Element Should Contain  xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]  Reserved for You
+    Click button  xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]/form/input[@value='cancel']
+    Element Should Contain  xpath=//table/tbody/tr[contains (.,'3:00 - 4:00')]/td[2]  Slot is Free
+
 *** Keywords ***
 Login
     Click Link  Login
@@ -50,4 +69,10 @@ setup application
     ${rc}=  Run And Return Rc  rake -f ${CURDIR}${/}..${/}Rakefile db:reset
     Should Be Equal As Integers  ${rc}  0
     Open Browser  http://localhost:3000
+
+open Resource1
+    Click Link  Resource1
+
+book a slot
+    [Arguments]  ${slot_name}  ${is_free_text}  ${is_reserved_text}
 
