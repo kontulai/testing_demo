@@ -1,9 +1,13 @@
 *** Settings ***
 Suite Setup     start selenium server
 Suite Teardown  stop selenium server
-Test Setup      open browser  http://localhost:3000
+Test Setup      setup application
 Test Teardown   close Browser
 Library         Selenium Library
+Library         OperatingSystem
+
+*** Variables ***
+${rc}  ${EMPTY}
 
 *** Test Cases ***
 Login with default user
@@ -11,6 +15,25 @@ Login with default user
     Login
     Page Should Contain  Signed in as: First User
     Logout
+    Page Should Contain  You are not logged in
+
+Sign up
+    Click Link  Sign up
+    Input Text  user_email  test@testing.com
+    Input password  user_password  password
+    Input Password  user_password_confirmation  password
+    Input text  user_name  Test User
+    Click Button  Sign up
+    Page Should Contain  Welcome! You have signed up successfully.
+    Page Should Contain  Signed in as: Test User
+    Logout
+
+Edit account
+    Login
+    Click link  Edit account
+    Click link  Cancel my account
+    Confirm Action
+    Page Should Contain  Bye! Your account was successfully cancelled. We hope to see you again soon.
     Page Should Contain  You are not logged in
 
 *** Keywords ***
@@ -22,4 +45,9 @@ Login
 
 Logout
     Click Link  Logout
+
+setup application
+    ${rc}=  Run And Return Rc  rake -f ${CURDIR}${/}..${/}Rakefile db:reset
+    Should Be Equal As Integers  ${rc}  0
+    Open Browser  http://localhost:3000
 
