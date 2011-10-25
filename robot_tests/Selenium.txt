@@ -55,11 +55,11 @@ Book and cancel a slot
 
 book a slot with second user
     Login  user2@example.com  please
-    open Resource  #default
+    open Resource  # default
     book a slot  3:00 - 4:00
     Logout
-    Login  #default  #default
-    open Resource  #default
+    Login  # default #default
+    open Resource  # default
     confirm booking  3:00 - 4:00  Reserved for: Second User
 
 *** Keywords ***
@@ -74,7 +74,7 @@ Logout
     Click Link  Logout
 
 setup application
-    ${rc}=  Run And Return Rc  rake -f ${CURDIR}${/}..${/}Rakefile db:reset
+    ${rc}=  Run And Return Rc  bundle exec rake -f ${CURDIR}${/}..${/}Rakefile db:reset
     Should Be Equal As Integers  ${rc}  0
     Open Browser  http://localhost:3000
 
