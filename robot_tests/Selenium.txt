@@ -10,6 +10,7 @@ Library         OperatingSystem
 ${rc}  ${EMPTY}
 ${default_is_free_text}  Slot is Free
 ${default_is_reserved_text}  Reserved for You
+${output}  ${EMPTY}
 
 *** Test Cases ***
 Login with default user
@@ -74,7 +75,8 @@ Logout
     Click Link  Logout
 
 setup application
-    ${rc}=  Run And Return Rc  bundle exec rake -f ${CURDIR}${/}..${/}Rakefile db:reset
+    ${rc}=  ${output}  Run And Return Rc  bundle exec rake -f ${CURDIR}${/}..${/}Rakefile db:reset
+    Should not contain  ${output}  failed
     Should Be Equal As Integers  ${rc}  0
     Open Browser  http://localhost:3000
 
