@@ -1,7 +1,7 @@
 *** Settings ***
 Suite Setup     start selenium server
 Suite Teardown  stop selenium server
-Test Setup      Open Browser \ http://localhost:3000
+Test Setup      Open Browser  http://localhost:3000
 Test Teardown   close Browser
 Library         Selenium Library  run_on_failure=Nothing  # #don't capture screenshots
 Library         OperatingSystem
