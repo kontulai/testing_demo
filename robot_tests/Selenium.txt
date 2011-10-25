@@ -3,7 +3,7 @@ Suite Setup     start selenium server
 Suite Teardown  stop selenium server
 Test Setup      setup application
 Test Teardown   close Browser
-Library         Selenium Library
+Library         Selenium Library  run_on_failure=Nothing  # #don't capture screenshots
 Library         OperatingSystem
 
 *** Variables ***
