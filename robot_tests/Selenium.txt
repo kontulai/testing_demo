@@ -75,6 +75,7 @@ Logout
     Click Link  Logout
 
 setup application
+    Run  bundle install
     ${rc}  ${output}=  Run And Return Rc and Output  bundle exec rake -f ${CURDIR}${/}..${/}Rakefile db:reset
     Should not contain  ${output}  failed
     Should Be Equal As Integers  ${rc}  0
