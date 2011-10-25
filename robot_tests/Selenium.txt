@@ -75,7 +75,7 @@ Logout
     Click Link  Logout
 
 setup application
-    ${rc}  ${output}=  Run And Return Rc and Output  ${CURDIR}${/}reset_db.sh
+    ${rc}  ${output}=  Run And Return Rc and Output  ${CURDIR}${/}..${/}reset_db.sh
     Should not contain  ${output}  Failed
     Should Be Equal As Integers  ${rc}  0
     Open Browser  http://localhost:3000
