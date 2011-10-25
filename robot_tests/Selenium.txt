@@ -74,7 +74,7 @@ Logout
     Click Link  Logout
 
 setup application
-    ${rc}=  Run And Return Rc  bundle exec rake -f ${CURDIR}${/}..${/}Rakefile db:reset
+    ${rc}=  Run And Return Rc  rake -f ${CURDIR}${/}..${/}Rakefile db:reset
     Should Be Equal As Integers  ${rc}  0
     Open Browser  http://localhost:3000
 
