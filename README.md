@@ -8,25 +8,25 @@ Installation
 
 fork this project: git clone https://git@github.com:rellu/<project name>
 
-install git:
-(optional install rvm:)
-install rails:
-install rake:
-install cucumber:
-install capybara:
-install robot:
-(optional install ride: )
+* install git:
+* (optional install rvm:)
+* install rails:
+* install rake:
+* install cucumber:
+* install capybara:
+* install robot:
+* (optional install ride: )
 
 In case of version conflicts this was implemented with following sofware versions:
 
-*ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-darwin11.2.0]
-*Rails 3.1.1
-*Robot Framework 2.6.3 (Python 2.7.1 on darwin)
-*rake, version 0.9.2
-*cucumber 1.1.0
-*rvm 1.8.6
-*capybara 1.1.1
-*robotframework-seleniumlibrary-2.8
+* ruby 1.9.2p290 (2011-07-09 revision 32553) [x86_64-darwin11.2.0]
+* Rails 3.1.1
+* Robot Framework 2.6.3 (Python 2.7.1 on darwin)
+* rake, version 0.9.2
+* cucumber 1.1.0
+* rvm 1.8.6
+* capybara 1.1.1
+* robotframework-seleniumlibrary-2.8
 
 Software usage
 --------------
@@ -44,10 +44,11 @@ These default setting will create the database assuming sqlite3 is used and exec
 The software allows you to create users and login with those users to make time slot bookings for resources for today. By default rake db:reset will populate the database with few test users, test resources and test bookings. You can see what it does exactly from `db/seeds.rb` file. However, do not delete anything from this file as some tests depend on these database populations.
 
 Simple basic use case:
-* Login with: user@example.com
-* Navigate to Resource1
-* Book a resource for some hour
-* Cancel the resource
+
+1.	Login with: user@example.com
+2.	Navigate to Resource1
+3.	Book a resource for some hour
+4.	Cancel the resource
 
 As you can see the usage is really limited but this still allows us to demonstrate how tests can be added to existing projects.
 
@@ -62,6 +63,7 @@ Cucumber tests are located in `/features/` folder. in `.feature` files you can v
 
 
 Robot tests can be executed by typing executing these in project folder:
+
 	rake db:reset  (to reset db)
 	pybot robot_tests (to execute robot tests)
 
@@ -72,10 +74,11 @@ It's easier to demonstrate the tests using ride.py editor.
 TODO:
 =====
 
-*Layout looks too basic: add css
-*Add feature to browse resources for more days than today
-*Add more complex multi-user tests
-*Improve session handling
-*Refactor
+* Layout looks too basic: add css
+* Add feature to browse resources for more days than today
+* Add more complex multi-user tests
+* Improve session handling
+* Refactor
+
 
      
