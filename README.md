@@ -19,9 +19,7 @@ fork this project: git clone https://git@github.com:rellu/project_name
 		rvm use 1.9.2
 		rvm --default 1.9.2
 	
-* install macports:
-	
-		[MacPorts](http://www.macports.org/install.php)
+* install macports: [MacPorts](http://www.macports.org/install.php)
 		
 * install rails:
 	
@@ -43,20 +41,20 @@ fork this project: git clone https://git@github.com:rellu/project_name
 * install robot:
  * [robot downloads](http://code.google.com/p/robotframework/downloads/list)
 
-		sudo python setup.py install
+			sudo python setup.py install
 
  * [robot selenium library](http://code.google.com/p/robotframework-seleniumlibrary/downloads/list)
 
-	 	sudo python setup.py install
+	 		sudo python setup.py install
 	
 * (optional install ride editor for robot: ) 
  * [wxPython](http://www.wxpython.org/download.php). To use wxPython you need to run python in 32-bit mode so:
 
-		defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
+			defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 
  * [ride](https://github.com/robotframework/RIDE/downloads)
 
-		sudo python setup.py install
+			sudo python setup.py install
 	
 	
 * install rest of the needed gems (type in project folder):
@@ -68,22 +66,22 @@ fork this project: git clone https://git@github.com:rellu/project_name
  * Create new OS X user jenkins
  * Modify the file /Library/LaunchDaemon/org.jenkins-ci.plist, remove the GroupName and daemon value and then change UserName to jenkins
 
-		sudo chown -R jenkins:wheel /Users/Shared/Jenkins
-		login jenkins
+			sudo chown -R jenkins:wheel /Users/Shared/Jenkins
+			login jenkins
 	
-		go to project folder:
-		if rvm is not installed for this user install rvm.
-		gem install bundler
-		bundle install
-		try out that cucumber and pybot works normally.
+			go to project folder:
+			if rvm is not installed for this user install rvm.
+			gem install bundler
+			bundle install
+			try out that cucumber and pybot works normally.
 	
-		login admin user and restart jenkins:
-		sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist
-		sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist
+			login admin user and restart jenkins:
+			sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist
+			sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist
 
  * install thin server: 
 
-	gem install thin
+			gem install thin
 
  * install jenkins plugins for robot, rails, ruby and git	
  * create new jenkins project with configuration:
