@@ -1,5 +1,5 @@
 Given /^user has not signed up or is not logged in$/ do
-  #clear database here
+
 end
 
 When /^he fills the sign up form with name: "([^"]*)" password: "([^"]*)" email: "([^"]*)"$/ do |name, pass, email|
@@ -13,5 +13,4 @@ end
 
 Then /^new user account has been created and user is logged in$/ do
   page.should have_content('Welcome! You have signed up successfully.')
-  #check whether logged in
 end

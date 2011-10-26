@@ -28,8 +28,7 @@ end
 #Logout Scenario
 
 Given /^I have logged in as any user$/ do
-  #user must be logged in
-  #when refactoring add login function here
+  login()
 end
 
 When /^I click "([^"]*)"$/ do |logout|
@@ -38,8 +37,7 @@ end
 
 Then /^I should see "([^"]*)"$/ do |not_logged_in|
   page.should have_content(not_logged_in)
-  #refactor to log in before logging out - need to put this to another feature with login background
-  #page.should have_content('Signed out successfully.')
+  page.should have_content('Signed out successfully.')
 end
 
 

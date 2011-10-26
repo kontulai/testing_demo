@@ -13,7 +13,7 @@ end
 
 Then /^user can see list of resources$/ do
   page.should have_content('Resource1')
-  #...
+
 end
 
 Given /^user is logged in$/ do
@@ -27,8 +27,6 @@ end
 
 Then /^user can see it's daily status$/ do
   page.should have_content('Reservations for today')
-  #check that it has a table
-  #and some prefilled slots
 end
 
 Given /^user has clicked a resource$/ do

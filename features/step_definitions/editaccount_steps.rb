@@ -6,7 +6,6 @@ When /^I edit my account and resign$/ do
   visit('/users/edit')
   page.should have_content('Cancel my account')
   click_link('Cancel my account')
-  #handle javascript dialog?
 
 end
 
