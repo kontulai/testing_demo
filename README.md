@@ -14,96 +14,96 @@ fork this project: git clone https://git@github.com:rellu/project_name
 * install git if not included in Xcode or using different OS: [git](http://git-scm.com/download)
 * (optional install rvm:) 
 
-	sudo bash < <( curl -s https://rvm.beginrescueend.com/install/rvm )
-	rvm install 1.9.2
-	rvm use 1.9.2
-	rvm --default 1.9.2
+		sudo bash < <( curl -s https://rvm.beginrescueend.com/install/rvm )
+		rvm install 1.9.2
+		rvm use 1.9.2
+		rvm --default 1.9.2
 	
 * install macports:
 	
-	[MacPorts](http://www.macports.org/install.php)
+		[MacPorts](http://www.macports.org/install.php)
 		
 * install rails:
 	
-	gem install rails
+		gem install rails
 	
 * install rake:
 	
-	gem install --remote rake
+		gem install --remote rake
 	
 * install cucumber:
 	
-	gem install cucumber
+		gem install cucumber
 	
 * install capybara:
 	
-	gem install capybara
-	sudo port install libffi
+		gem install capybara
+		sudo port install libffi
 	
 * install robot:
-** [robot downloads](http://code.google.com/p/robotframework/downloads/list)
+ * [robot downloads](http://code.google.com/p/robotframework/downloads/list)
 
-	sudo python setup.py install
+		sudo python setup.py install
 
-** [robot selenium library](http://code.google.com/p/robotframework-seleniumlibrary/downloads/list)
+ * [robot selenium library](http://code.google.com/p/robotframework-seleniumlibrary/downloads/list)
 
-	 sudo python setup.py install
+	 	sudo python setup.py install
 	
 * (optional install ride editor for robot: ) 
-** [wxPython](http://www.wxpython.org/download.php). To use wxPython you need to run python in 32-bit mode so:
+ * [wxPython](http://www.wxpython.org/download.php). To use wxPython you need to run python in 32-bit mode so:
 
-	defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
+		defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
 
-** [ride](https://github.com/robotframework/RIDE/downloads)
+ * [ride](https://github.com/robotframework/RIDE/downloads)
 
-	sudo python setup.py install
+		sudo python setup.py install
 	
 	
 * install rest of the needed gems (type in project folder):
-	gem install bundler
-	bundle install
+		gem install bundler
+		bundle install
 	
 * (optional install jenkins: [jenkins](http://jenkins-ci.org/))
-** make sure rvm is installed for all users (install rvm with sudo, rvm can be found from /usr/local/rvm/)
-** Create new OS X user jenkins
-** Modify the file /Library/LaunchDaemon/org.jenkins-ci.plist, remove the GroupName and daemon value and then change UserName to jenkins
+ * make sure rvm is installed for all users (install rvm with sudo, rvm can be found from /usr/local/rvm/)
+ * Create new OS X user jenkins
+ * Modify the file /Library/LaunchDaemon/org.jenkins-ci.plist, remove the GroupName and daemon value and then change UserName to jenkins
 
-	sudo chown -R jenkins:wheel /Users/Shared/Jenkins
-	login jenkins
+		sudo chown -R jenkins:wheel /Users/Shared/Jenkins
+		login jenkins
 	
-	go to project folder:
-	if rvm is not installed for this user install rvm.
-	gem install bundler
-	bundle install
-	try out that cucumber and pybot works normally.
+		go to project folder:
+		if rvm is not installed for this user install rvm.
+		gem install bundler
+		bundle install
+		try out that cucumber and pybot works normally.
 	
-	login admin user and restart jenkins:
-	sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist
-	sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist
+		login admin user and restart jenkins:
+		sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist
+		sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist
 
-** install thin server: 
+ * install thin server: 
 
 	gem install thin
 
-** install jenkins plugins for robot, rails, ruby and git	
-** create new jenkins project with configuration:
-*** git: https://git@github.com:rellu/project_name
-*** poll scm: * * * * *
-*** Execute shell:
+ * install jenkins plugins for robot, rails, ruby and git	
+ * create new jenkins project with configuration:
+  * git: https://git@github.com:rellu/project_name
+  * poll scm: * * * * *
+  * Execute shell:
 
- 	#!/bin/bash -x
-	source "/usr/local/rvm/scripts/rvm"
-	rvm use 1.9.2
-	ruby -v
-	bundle install
-	bundle exec rake db:migrate
-	bundle exec rake cucumber
-	bundle exec rake db:reset
-	thin start -d
-	/usr/local/bin/pybot robot_tests
-	thin stop
+ 		#!/bin/bash -x
+		source "/usr/local/rvm/scripts/rvm"
+		rvm use 1.9.2
+		ruby -v
+		bundle install
+		bundle exec rake db:migrate
+		bundle exec rake cucumber
+		bundle exec rake db:reset
+		thin start -d
+		/usr/local/bin/pybot robot_tests
+		thin stop
 
-*** check publish robot results
+  * check publish robot results
 
 	
 * (optional install textmate bundles for robot, cucumber, rails etc.)
