@@ -8,7 +8,7 @@ Installation
 
 Installation instructions for Mac OS X Lion. Follow all the installer instructions and install all required dependecies.
 
-fork this project: git clone https://git@github.com:rellu/project_name
+fork this project: git clone https://git@github.com:rellu/testing_demo
 
 * install XCode: Go to app store, search and install XCode, this should be bundled with git. (Required for macports)
 * install git if not included in Xcode or using different OS: [git](http://git-scm.com/download)
@@ -85,21 +85,21 @@ fork this project: git clone https://git@github.com:rellu/project_name
 
  * install jenkins plugins for robot, rails, ruby and git	
  * create new jenkins project with configuration:
-  * git: https://git@github.com:rellu/project_name
+  * git: https://git@github.com:rellu/testing_demo
   * poll scm: * * * * *
   * Execute shell:
 
- 		#!/bin/bash -x
-		source "/usr/local/rvm/scripts/rvm"
-		rvm use 1.9.2
-		ruby -v
-		bundle install
-		bundle exec rake db:migrate
-		bundle exec rake cucumber
-		bundle exec rake db:reset
-		thin start -d
-		/usr/local/bin/pybot robot_tests
-		thin stop
+	 		#!/bin/bash -x
+			source "/usr/local/rvm/scripts/rvm"
+			rvm use 1.9.2
+			ruby -v
+			bundle install
+			bundle exec rake db:migrate
+			bundle exec rake cucumber
+			bundle exec rake db:reset
+			thin start -d
+			/usr/local/bin/pybot robot_tests
+			thin stop
 
   * check publish robot results
 
