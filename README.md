@@ -64,7 +64,7 @@ fork this project: git clone https://git@github.com:rellu/testing_demo
 * (optional install jenkins: [jenkins](http://jenkins-ci.org/))
  * make sure rvm is installed for all users (install rvm with sudo, rvm can be found from /usr/local/rvm/)
  * Create new OS X user jenkins
- * Modify the file /Library/LaunchDaemon/org.jenkins-ci.plist, remove the GroupName and daemon value and then change UserName to jenkins
+ * Modify the file `/Library/LaunchDaemon/org.jenkins-ci.plist`, remove the GroupName and daemon value and then change UserName to jenkins
 
 			sudo chown -R jenkins:wheel /Users/Shared/Jenkins
 			login jenkins
@@ -83,7 +83,8 @@ fork this project: git clone https://git@github.com:rellu/testing_demo
 
 			gem install thin
 
- * install jenkins plugins for robot, rails, ruby and git	
+ * install jenkins plugins for robot, rails, ruby and git
+ * open: http://localhost:8080/
  * create new jenkins project with configuration:
   * git: https://git@github.com:rellu/testing_demo
   * poll scm: * * * * *
@@ -133,7 +134,7 @@ These default setting will create the database assuming sqlite3 is used and exec
 		
 The software allows you to create users and login with those users to make time slot bookings for resources for today. By default rake db:reset will populate the database with few test users, test resources and test bookings. You can see what it does exactly from `db/seeds.rb` file. However, do not delete anything from this file as some tests depend on these database populations.
 
-Simple basic use case:
+Simple basic use case on http://localhost:3000:
 
 1.	Login with: u: user@example.com, p: please
 2.	Navigate to Resource1
