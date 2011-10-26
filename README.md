@@ -6,16 +6,107 @@ This is a simple example project that demonstrates a simple reservation system i
 Installation
 ------------
 
-fork this project: git clone https://git@github.com:rellu/<project name>
+Installation instructions for Mac OS X Lion. Follow all the installer instructions and install all required dependecies.
 
-* install git:
-* (optional install rvm:)
+fork this project: git clone https://git@github.com:rellu/project_name
+
+* install XCode: Go to app store, search and install XCode, this should be bundled with git. (Required for macports)
+* install git if not included in Xcode or using different OS: [git](http://git-scm.com/download)
+* (optional install rvm:) 
+
+	sudo bash < <( curl -s https://rvm.beginrescueend.com/install/rvm )
+	rvm install 1.9.2
+	rvm use 1.9.2
+	rvm --default 1.9.2
+	
+* install macports:
+	
+	[MacPorts](http://www.macports.org/install.php)
+		
 * install rails:
+	
+	gem install rails
+	
 * install rake:
+	
+	gem install --remote rake
+	
 * install cucumber:
+	
+	gem install cucumber
+	
 * install capybara:
+	
+	gem install capybara
+	sudo port install libffi
+	
 * install robot:
-* (optional install ride: )
+** [robot downloads](http://code.google.com/p/robotframework/downloads/list)
+
+	sudo python setup.py install
+
+** [robot selenium library](http://code.google.com/p/robotframework-seleniumlibrary/downloads/list)
+
+	 sudo python setup.py install
+	
+* (optional install ride editor for robot: ) 
+** [wxPython](http://www.wxpython.org/download.php). To use wxPython you need to run python in 32-bit mode so:
+
+	defaults write com.apple.versioner.python Prefer-32-Bit -bool yes
+
+** [ride](https://github.com/robotframework/RIDE/downloads)
+
+	sudo python setup.py install
+	
+	
+* install rest of the needed gems (type in project folder):
+	gem install bundler
+	bundle install
+	
+* (optional install jenkins: [jenkins](http://jenkins-ci.org/))
+** make sure rvm is installed for all users (install rvm with sudo, rvm can be found from /usr/local/rvm/)
+** Create new OS X user jenkins
+** Modify the file /Library/LaunchDaemon/org.jenkins-ci.plist, remove the GroupName and daemon value and then change UserName to jenkins
+
+	sudo chown -R jenkins:wheel /Users/Shared/Jenkins
+	login jenkins
+	
+	go to project folder:
+	if rvm is not installed for this user install rvm.
+	gem install bundler
+	bundle install
+	try out that cucumber and pybot works normally.
+	
+	login admin user and restart jenkins:
+	sudo launchctl unload -w /Library/LaunchDaemons/org.jenkins-ci.plist
+	sudo launchctl load -w /Library/LaunchDaemons/org.jenkins-ci.plist
+
+** install thin server: 
+
+	gem install thin
+
+** install jenkins plugins for robot, rails, ruby and git	
+** create new jenkins project with configuration:
+*** git: https://git@github.com:rellu/project_name
+*** poll scm: * * * * *
+*** Execute shell:
+
+ 	#!/bin/bash -x
+	source "/usr/local/rvm/scripts/rvm"
+	rvm use 1.9.2
+	ruby -v
+	bundle install
+	bundle exec rake db:migrate
+	bundle exec rake cucumber
+	bundle exec rake db:reset
+	thin start -d
+	/usr/local/bin/pybot robot_tests
+	thin stop
+
+*** check publish robot results
+
+	
+* (optional install textmate bundles for robot, cucumber, rails etc.)
 
 In case of version conflicts this was implemented with following sofware versions:
 
@@ -27,6 +118,7 @@ In case of version conflicts this was implemented with following sofware version
 * rvm 1.8.6
 * capybara 1.1.1
 * robotframework-seleniumlibrary-2.8
+* Rubygems 1.8.10
 
 Software usage
 --------------
@@ -45,7 +137,7 @@ The software allows you to create users and login with those users to make time 
 
 Simple basic use case:
 
-1.	Login with: user@example.com
+1.	Login with: u: user@example.com, p: please
 2.	Navigate to Resource1
 3.	Book a resource for some hour
 4.	Cancel the resource
@@ -69,7 +161,13 @@ Robot tests can be executed by typing executing these in project folder:
 
 Robot tests are in a single file /robot_tests/Selenium.txt
 Test results can be found in the project folder in `report.html` and `log.html`
-It's easier to demonstrate the tests using ride.py editor. 
+It's easier to demonstrate the tests using ride.py editor. Open ride:
+
+	ride.py
+	
+* open /robot_tests folder
+* you can present and run tests easier with this editor
+
 
 TODO:
 =====
