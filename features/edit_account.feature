@@ -12,7 +12,3 @@ Scenario: resign
   When I edit my account and resign
   Then my user account is deleted
 
-
-
-
-  

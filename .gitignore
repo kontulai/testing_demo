@@ -4,3 +4,7 @@ log/*.log
 tmp/
 .sass-cache/
 .DS_Store
+log.html
+report.html
+output.xml
+selenium_server_log.txt

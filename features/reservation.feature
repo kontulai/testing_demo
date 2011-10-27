@@ -19,7 +19,7 @@ Scenario: user can see daily status of a resource
 
 Scenario: user can book a resource
   Given user has clicked a resource
-  When user clicks "reserve" button for a time slot: "3:00 - 4:00", which displays "Slot is Free,"
+  When user clicks "reserve" button for a time slot: "3:00 - 4:00", which displays "Slot is Free"
   Then the same slot: "3:00 - 4:00" displays: "Reserved for You"   
 
 Scenario: user can cancel a resource
