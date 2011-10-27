@@ -22,10 +22,7 @@ Login with default user
 
 Sign up
     Click Link  Sign up
-    Input Text  user_email  test@testing.com
-    Input password  user_password  password
-    Input Password  user_password_confirmation  password
-    Input text  user_name  Test User
+    fill form fields
     Click Button  Sign up
     Page Should Contain  Welcome! You have signed up successfully.
     Page Should Contain  Signed in as: Test User
@@ -99,4 +96,10 @@ cancel a slot
 confirm booking
     [Arguments]  ${slot_name}  ${is_reserved_text}=${default_is_reserved_text}
     Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_reserved_text}
+
+fill form fields
+    Input Text  user_email  test@testing.com
+    Input password  user_password  password
+    Input Password  user_password_confirmation  password
+    Input text  user_name  Test User
 
