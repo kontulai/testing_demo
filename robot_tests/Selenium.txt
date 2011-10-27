@@ -1,8 +1,8 @@
 *** Settings ***
 Suite Setup     start selenium server
 Suite Teardown  stop selenium server
-Test Setup      Open Browser  http://localhost:3000
-Test Teardown   close Browser
+Test Setup      setup application
+Test Teardown   Log out and close browser
 Library         Selenium Library  run_on_failure=Nothing  # #don't capture screenshots
 Library         OperatingSystem
 
@@ -14,54 +14,62 @@ ${output}  ${EMPTY}
 
 *** Test Cases ***
 Login with default user
-    Page Should Contain  You are not logged in
-    Login
-    Page Should Contain  Signed in as: First User
-    Logout
-    Page Should Contain  You are not logged in
+    Given Page Should Contain   You are not logged in
+    When I Log in
+    Then Page Should Contain  Signed in as: First User
+
+Login with false credentials
+    Given I Log in  foobarzig@fdsa.com  fdsafdsa
+    Then Page Should Contain  Invalid email or password.
+    [Teardown]  close browser
 
 Sign up
-    Click Link  Sign up
-    fill form fields
-    Click Button  Sign up
-    Page Should Contain  Welcome! You have signed up successfully.
-    Page Should Contain  Signed in as: Test User
-    Logout
+    Given click link  Sign up
+    And I Fill form fields
+    And Click button  Sign up
+    Then Page Should Contain  Welcome! You have signed up successfully.
 
-Edit account
-    Login  test@testing.com  password
-    Click link  Edit account
-    Click link  Cancel my account
-    Confirm Action
-    Page Should Contain  Bye! Your account was successfully cancelled. We hope to see you again soon.
-    Page Should Contain  You are not logged in
+Remove account
+    Given I Log In  user@example.com  please
+    And click link  Edit account
+    And click link  Cancel my account
+    And Confirm action
+    Then Page should contain  Bye! Your account was successfully cancelled. We hope to see you again soon.
+    And Page should contain  You are not logged in
+    [Teardown]  close browser
 
 Resource listing
-    Login
-    Page Should Contain Link  Resource1
+    Given I log in
+    Then page should contain  Resource1
 
 Daily status
-    Login
-    open Resource
-    Page Should Contain  Reservations for today
+    Given I Log In
+    and open resource
+    then page should contain  Reservations for today
 
-Book and cancel a slot
-    Login
-    open Resource
-    book a slot  3:00 - 4:00
-    cancel a slot  3:00 - 4:00
+Book a slot
+    Given I Log in
+    And open resource
+    and book a slot  3:00 - 4:00
+    then slot should be booked  3:00 - 4:00
+
+Cancel a slot
+    Given I Log in
+    And open resource
+    And cancel a slot  1:00 - 2:00
+    then slot should not be booked  1:00 - 2:00
 
 book a slot with second user
-    Login  user2@example.com  please
-    open Resource  # default
-    book a slot  3:00 - 4:00
-    Logout
-    Login  # default #default
-    open Resource  # default
-    confirm booking  3:00 - 4:00  Reserved for: Second User
+    Given I log in  user2@example.com  please
+    And open resource  # default
+    And book a slot  3:00 - 4:00
+    And logout
+    And i log in  # default #default
+    and open resource  # default
+    then slot should be booked  3:00 - 4:00  Reserved for: Second User
 
 *** Keywords ***
-Login
+I Log in
     [Arguments]  ${user_name}=user@example.com  ${password}=please
     Click Link  Login
     Input Text  user_email  ${user_name}
@@ -85,21 +93,27 @@ book a slot
     [Arguments]  ${slot_name}  ${is_free_text}=${default_is_free_text}  ${is_reserved_text}=${default_is_reserved_text}
     Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_free_text}
     Click button  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]/form/input[@value='reserve']
-    Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_reserved_text}
 
 cancel a slot
     [Arguments]  ${slot_name}  ${is_free_text}=${default_is_free_text}  ${is_reserved_text}=${default_is_reserved_text}
     Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_reserved_text}
     Click button  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]/form/input[@value='cancel']
-    Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_free_text}
 
-confirm booking
-    [Arguments]  ${slot_name}  ${is_reserved_text}=${default_is_reserved_text}
-    Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_reserved_text}
-
-fill form fields
+I fill form fields
     Input Text  user_email  test@testing.com
     Input password  user_password  password
     Input Password  user_password_confirmation  password
     Input text  user_name  Test User
+
+Log out and close browser
+    logout
+    close browser
+
+Slot should be booked
+    [Arguments]  ${slot name}  ${is reserved text}=${default is reserved text}
+    Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is reserved text}
+
+Slot should not be booked
+    [Arguments]  ${slot name}  ${is_free_text}=${default is free text}
+    Element Should Contain  xpath=//table/tbody/tr[contains (.,'${slot_name}')]/td[2]  ${is_free_text}
 
